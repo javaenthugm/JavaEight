@@ -1,40 +1,15 @@
 package com.gk.study.java.eight.basics;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-class Apple{
-	
-	String color;
-	Float weight;
-	
-	public Apple(String clr,Float wgt){
-		this.color = clr;
-		this.weight = wgt;
-	}
-	
-	public String getColor() {
-		return color;
-	}
-	public void setColor(String color) {
-		this.color = color;
-	}
-	public Float getWeight() {
-		return weight;
-	}
-	public void setWeight(Float weight) {
-		this.weight = weight;
-	}
+import com.gk.study.java.eight.behaviour.parameterization.Apple;
 
-	@Override
-	public String toString() {
-		return "Apple [color=" + color + ", weight=" + weight + "]";
-	}
-	
-	
-}
+
 
 
 
@@ -68,6 +43,14 @@ public class WhyJavaEight {
 		System.out.println("After Sorting using Java 7:"+appleList.toString());
 		
 		//System.out.println("Soring using java 8:"+appleList.sort(comparing(Apple::getWeight)));
+		
+		File[] hiddenFiles = new File(".").listFiles(File::isHidden);
+		
+		List<Apple> s = appleList.parallelStream().filter((Apple a) -> a.getWeight()>1).collect(Collectors.toList());
+
+		//s.sort((Apple a1) -> a1.color.compareTo(a2.color));
+		
+		for(Apple a :s)System.out.println(a);
 		
 	}
 
