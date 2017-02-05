@@ -52,6 +52,9 @@ public class WhyJavaEight {
 		
 		for(Apple a :s)System.out.println(a);
 		
+		
+		
+		
 	}
 
 }

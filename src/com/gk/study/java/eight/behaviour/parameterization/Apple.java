@@ -9,6 +9,10 @@ public class Apple {
 	String color;
 	Float weight;
 	
+	public Apple(Float wgt){
+		this.weight=wgt;
+	}
+	
 	public Apple(String clr,Float wgt){
 		this.color = clr;
 		this.weight = wgt;
