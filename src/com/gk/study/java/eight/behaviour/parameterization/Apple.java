@@ -11,6 +11,7 @@ public class Apple {
 	
 	public Apple(Float wgt){
 		this.weight=wgt;
+		
 	}
 	
 	public Apple(String clr,Float wgt){
