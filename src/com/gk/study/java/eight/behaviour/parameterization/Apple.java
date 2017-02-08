@@ -9,8 +9,9 @@ public class Apple {
 	String color;
 	Float weight;
 	
-	public Apple(Float wgt){
+	public Apple(Float wgt,String col){
 		this.weight=wgt;
+		this.color=col;
 	}
 	
 	public Apple(String clr,Float wgt){
