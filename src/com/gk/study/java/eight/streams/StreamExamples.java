@@ -1,6 +1,7 @@
 package com.gk.study.java.eight.streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +34,7 @@ public class StreamExamples {
 		System.out.println(".............. bigger apples .............");
 		//Comparator.comparing
 		List<Apple> biggerApples = apples.parallelStream()
-				.filter(a->a.getWeight()>10)
+				.filter(a->a.getWeight()>14)
 				.sorted(Comparator.comparing(Apple::getWeight))
 				.collect(Collectors.toList());
 		
@@ -41,6 +42,29 @@ public class StreamExamples {
 		biggerApples.forEach(System.out::println);
 		
 		biggerApples.forEach(app -> System.out.println(app.getColor()));
+		System.out.println("...........................................");
+		System.out.println(biggerApples.parallelStream().findFirst().get().getColor());
+		
+		System.out.println("...........................................");
+		System.out.println(biggerApples.parallelStream().findAny().get().getColor());
+		
+		
+		/**
+		 * Data source
+		 * */
+		
+		List<Dish> menu = Arrays.asList(
+				new Dish("pork",false, 800, Dish.Type.MEAT),
+				new Dish("beef",false, 700, Dish.Type.MEAT),
+				new Dish("chicken",false, 400, Dish.Type.MEAT),
+				new Dish("french fries",true, 530, Dish.Type.OTHER),
+				new Dish("rice",true, 350, Dish.Type.OTHER),
+				new Dish("season fruit",true, 120, Dish.Type.OTHER),
+				new Dish("pizza",true, 550, Dish.Type.OTHER),
+				new Dish("prawns",false, 300, Dish.Type.FISH),
+				new Dish("salmon",false, 300, Dish.Type.FISH)				
+				);
+		
 				
 	}
 
