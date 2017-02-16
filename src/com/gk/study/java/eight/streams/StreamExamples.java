@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.gk.study.java.eight.behaviour.parameterization.Apple;
 
@@ -64,11 +65,50 @@ public class StreamExamples {
 				new Dish("prawns",false, 300, Dish.Type.FISH),
 				new Dish("salmon",false, 300, Dish.Type.FISH)				
 				);
-		
-		List<String> hcItems = menu.parallelStream().filter(m -> m.getCalories() > 400).map(Dish::getName).collect(Collectors.toList());
+		System.out.println("...........................................");
+		List<String> hcItems = menu.parallelStream().filter(m -> m.getCalories() > 400).map(Dish::getName).limit(2).collect(Collectors.toList());
 		hcItems.forEach(System.out::println);
 		
+		System.out.println("..........................Stream can be Traveserd only once");
 		
+		List<String> onlyOnce = Arrays.asList("a","b","c","A");
+		
+		Stream<String> s = onlyOnce.stream();
+		
+		s.forEach(System.out::println);
+		
+		try {
+			s.forEach(System.out::println); // This results in IllegalStateException
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("..................");
+		onlyOnce.forEach(System.out::println);
+		
+		System.out.println("..................Intermediate operations");
+		
+		menu.stream().filter(d -> {System.out.println("Filtering.."+d.getName());
+					return d.getCalories()>400;}
+					).map(d->{System.out.println("Mapping..."+d.getName());
+					return d.getName();}).limit(3).collect(Collectors.toList()).forEach(System.out::println);;
+		
+		System.out.println("..................");
+		
+		menu.parallelStream()
+			.filter(d -> d.getCalories()<300)
+			.map(d -> d.getName())
+			.limit(3)
+			.forEach(d -> System.out.println(d));
+			
+			
+			
+			
+		
+		
+							  
+							  
+				
 	}
 
 }
