@@ -65,7 +65,10 @@ public class StreamExamples {
 				new Dish("salmon",false, 300, Dish.Type.FISH)				
 				);
 		
-				
+		List<String> hcItems = menu.parallelStream().filter(m -> m.getCalories() > 400).map(Dish::getName).collect(Collectors.toList());
+		hcItems.forEach(System.out::println);
+		
+		
 	}
 
 }
