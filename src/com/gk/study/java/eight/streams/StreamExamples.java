@@ -101,12 +101,30 @@ public class StreamExamples {
 			.limit(3)
 			.forEach(d -> System.out.println(d));
 			
-			
-			
-			
+	    
+		System.out.println("..................");	
+	    List<Integer> numbers = Arrays.asList(1,2,4,5,6,2,4,8,10);
+	   
+		numbers.stream()
+		   .filter(n-> n % 2==0)
+		   .distinct()
+		   .sorted()
+		   .forEach(System.out::println);
+		
+		System.out.println("..................");
+		numbers.parallelStream()
+		   .filter(n-> n % 2==0)
+		   .distinct()
+		   .sorted()
+		   .forEach(System.out::println);
+		
+		System.out.println("..................");
+		menu.stream()
+			.filter(d -> d.getType()==Dish.Type.MEAT)
+			.limit(2)
+			.forEach(d -> System.out.println(d.getName()));
 		
 		
-							  
 							  
 				
 	}
