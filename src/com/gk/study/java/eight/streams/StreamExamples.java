@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import com.gk.study.java.eight.behaviour.parameterization.Apple;
@@ -125,8 +126,50 @@ public class StreamExamples {
 			.forEach(d -> System.out.println(d.getName()));
 		
 		
+		System.out.println(".................. 5.6 Numeric Streams (with boxing) ");
 							  
-				
+		int totalCalories = menu.stream()
+			.map(Dish::getCalories)
+			.reduce(0,(n1,n2)->n1+n2)
+			.intValue();
+
+		
+		System.out.println("Total calories="+totalCalories);
+		
+		int totalCal = menu.stream()
+						   .mapToInt(d -> d.getCalories())
+						   .sum();
+		System.out.println("Total Calories using Numeric Stream="+totalCal);
+		
+		menu.stream()
+			.mapToInt(d -> d.getCalories())
+			.average().ifPresent(e -> System.out.println("Average = "+e));
+		menu.stream()
+			.mapToInt(d -> d.getCalories())
+			.min().ifPresent(e -> System.out.println("Minumum = "+e));
+		menu.stream()
+			.mapToInt(d -> d.getCalories())
+			.max().ifPresent(e -> System.out.println("Maximum = "+e));			
+		
+		System.out.println(".................. 5.6.2 Numeric ranges");
+		
+		
+		System.out.println(IntStream.rangeClosed(1, 100)
+									.filter(i -> i%2==0)
+									.count());
+		
+		IntStream.range(1, 100)
+				 .filter(i -> i%2 == 1)
+				 .forEachOrdered(i -> System.out.print(i+" "));
+		
+		//Pythagorean Triples
+		/*IntStream.rangeClosed(1, 100).boxed()
+										   .flatMap(a -> 
+										   		IntStream.rangeClosed(a, 100)
+												    	 .filter(b -> Math.sqrt(a*a+b*b)%1==0)
+												   		 .map(b -> new int[]{a,b, (int)Math.sqrt(a*a+b*b)})
+												   );*/
+										   
 	}
 
 }
