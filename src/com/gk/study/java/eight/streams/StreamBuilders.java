@@ -27,10 +27,25 @@ public class StreamBuilders {
 		
 		Stream.iterate(0, n -> n+2)
 			  .limit(10)
+			  //.map(e -> Arrays.asList(e))
 			  .forEach(System.out::println);
 		
-		//Stream.iterate(0, 
+		//Fibonacci tuple series
+		System.out.println("............... Fibonacci tuple series");
+		Stream.iterate(new int[]{0,1},t -> new int[]{t[1],t[0]+t[1]})
+			  .limit(20)
+			  .forEach(ar -> System.out.print(Arrays.toString(ar) +" "));
+		
+		/*Stream.iterate(1, n->n+2)
+			  .limit(20)
+			  .forEach(System.out::println);*/
+		System.out.println("............... Fibonacci series");
+		Stream.iterate(new int[]{0, 1}, t->new int[]{t[1],t[0]+t[1]})
+			  .limit(20)
+			  .map(e -> e[0])
+			  .forEach(fs -> System.out.print(fs+" "));
+		}
 					
 		
-	}
+	
 }

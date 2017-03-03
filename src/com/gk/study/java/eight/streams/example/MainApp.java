@@ -3,6 +3,7 @@ package com.gk.study.java.eight.streams.example;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -109,8 +110,17 @@ public class MainApp {
 					.reduce((t1,t2)->t1.getValue()<t2.getValue()?t1:t2)
 					.ifPresent(System.out::println);
 					
-				
-					
+		
+		//Chapter - 6
+		System.out.println("................Chapter-6");			
+		/*Map<Integer,List<Transaction>> map = transactions.stream()
+					.collect(Collectors.groupingBy(Transaction::getYear));
+		
+		map.forEach((k,v) -> System.out.println("Year="+k+", Transactions=" +v));*/
+		
+		transactions.stream()
+					.collect(Collectors.groupingBy(Transaction::getYear))
+					.forEach((k,v) -> System.out.println("Year="+k+", Transactions=" +v));
 		
 		
 		
