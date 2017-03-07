@@ -44,5 +44,10 @@ public class Dish {
 
 
 	public enum Type{MEAT, FISH, OTHER}
+	
+	public String toString(){
+		
+		return "{Dish:Name="+this.name+",Type="+this.type+",Calories="+this.calories+",Is Vegetarian="+this.vegetarian+"}";
+	}
 
 }

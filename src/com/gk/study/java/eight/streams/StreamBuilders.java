@@ -41,7 +41,7 @@ public class StreamBuilders {
 			  .forEach(System.out::println);*/
 		System.out.println("............... Fibonacci series");
 		Stream.iterate(new int[]{0, 1}, t->new int[]{t[1],t[0]+t[1]})
-			  .limit(20)
+			 // .limit(20)
 			  .map(e -> e[0])
 			  .forEach(fs -> System.out.print(fs+" "));
 		}

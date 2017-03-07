@@ -158,7 +158,7 @@ public class StreamExamples {
 									.filter(i -> i%2==0)
 									.count());
 		
-		IntStream.range(1, 100)
+		IntStream.range(1, 10)
 				 .filter(i -> i%2 == 1)
 				 .forEachOrdered(i -> System.out.print(i+" "));
 		
@@ -169,6 +169,13 @@ public class StreamExamples {
 												    	 .filter(b -> Math.sqrt(a*a+b*b)%1==0)
 												   		 .map(b -> new int[]{a,b, (int)Math.sqrt(a*a+b*b)})
 												   );*/
+		System.out.println();
+		System.out.println("................... Collectors.groupingBy->Map");
+		menu.stream()
+			.collect(Collectors.groupingBy(Dish::getType))
+			.forEach((k,v) -> System.out.println("Type="+k+",Menu="+v.size()));
+		
+		
 										   
 	}
 
