@@ -81,6 +81,25 @@ public class Ch06_CollectingDataWithStreams {
 			.collect(Collectors.partitioningBy(Dish::isVegetarian))
 			.forEach((k,v) -> System.out.println(k+"="+v.stream().map(Dish::getName).collect(Collectors.toList())));
 		
+		
+		menu.stream()
+			.collect(Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)))
+			.ifPresent(System.out::println);;
+		
+		menu.stream()
+			.collect(Collectors.minBy(Comparator.comparingInt(Dish::getCalories)))
+			.ifPresent(System.out::println);
+			
+		int sum = menu.stream()
+					  .map(Dish::getCalories)
+					  .reduce(0,(a,b) -> a+b);
+		
+		System.out.println(sum);
+	
+		System.out.println(menu.stream()
+							   .map(Dish::getCalories).reduce(0, Integer::sum));
+		
+		
 	}
 	
 
