@@ -25,7 +25,7 @@ public class Ch07_ParallelDataProcessingAndPerformance {
 		System.out.println("Sequetial sum done in "
 				+ measureSumPerf(Ch07_ParallelDataProcessingAndPerformance::parallelSum, 10_000_000) + " msecs");
 	  
-		System.out.println("Sequetial sum using Streams done in "
+		System.out.println("Parallal sum using Streams done in "
 				+ measureSumPerf(Ch07_ParallelDataProcessingAndPerformance::parallelSumUsingLongStream, 10_000_000) + " msecs");
 		
 	}
